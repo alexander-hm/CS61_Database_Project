@@ -1,5 +1,5 @@
 # US Funds dataset from Yahoo Finance
-###The dataset tracks historical changes of mutual funds and ETFs using data from Yahoo Finance.
+### The dataset tracks historical changes of mutual funds and ETFs using data from Yahoo Finance.
 
 ## Contents
 The file contains 23,783 Mutual Funds and 2,310 ETFs with:
@@ -13,7 +13,7 @@ The file contains 23,783 Mutual Funds and 2,310 ETFs with:
 https://www.kaggle.com/datasets/stefanoleone992/mutual-funds-and-etfs
 
 ## Research Questions
-- Which funds performed better over the period of time.
-- Which funds have the highest average daily trading volume.
+- Which funds performed better over the period of time?
+- Which funds have the highest average daily trading volume?
 - What is the largest single-day growth experienced by a fund? Month? Year?
 - What is the average yearly growth of funds? By how much are the top funds able to outperform the average?
