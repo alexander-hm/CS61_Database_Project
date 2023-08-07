@@ -1,5 +1,5 @@
 # US Funds dataset from Yahoo Finance
-### The dataset tracks historical changes of mutual funds and ETFs using data from Yahoo Finance.
+### The dataset tracks historical changes of mutual funds and ETFs using data from Yahoo Finance. For the purpose and scope of the project, the database will only focus on the ETFs from the dataset.
 
 ## Contents
 The file contains 23,783 Mutual Funds and 2,310 ETFs with:
