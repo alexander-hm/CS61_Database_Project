@@ -35,15 +35,15 @@ CREATE TABLE general (
 ## Data Input
 After the tables are created, the dataset is imported into MySQL and formatted into the respective tables. 
 
-#### Pre-Import Manipulation/Transformation
+### Pre-Import Manipulation/Transformation
 Prior to importing the dataset to MySQL, the data will be cleaned up from the .CSV files in Excel. Specific alterations include:
 - Delete the quote_type attribute from the etf.csv table because it is obsolete (all 'ETF' for the subset of the dataset being used).
 - Delete the AAA fund from the etf_prices.csv table because it does not exist in the etf.csv table.
 - Review data from the etf.csv table for discrepancies from alignment issues from 'fund_short_name, fund_long_name,' and 'fund_family' as described in the discussion on [Kaggle](https://www.kaggle.com/datasets/stefanoleone992/mutual-funds-and-etfs/discussion/329929).
-#### Import Processes
+### Import Processes
 Load the two .csv files into the created 'us_funds' database using the Table Data Import Wizard.
-#### Post-Import Manipulation/Transformation
-Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. 
+### Post-Import Manipulation/Transformation
+Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. Similar to creating the tables, populating the tables should be done in the same order so that successive tables can reference data such as 'region' and 'region_id'.
 
 Sample code for importing data into the 'region' table:
 ```sql
