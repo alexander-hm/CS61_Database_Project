@@ -1,8 +1,8 @@
 # Database Build Plan
 ## Schema and Tables
-Create a 'us_funds' database in MySQL using the ```sql CREATE DATABASE``` command. The creation of schema and tables is done in accordance with the [entity relationship diagram](ERD.md). Table names, attributes, and data types are all described there. The tables without foreign keys (```region, currency, family, category, timezone, investment_type, size```) are created first. The second round of tables will reference these (```exchange, general, category_returns```). Then, the remaining tables are created (```daily_performance, indicators, returns, ratios, averages, 52_week_performance```). This will allow the foreign keys to be referenced when the table is first created.
+Create a `us_funds` database in MySQL using the ```sql CREATE DATABASE``` command. The creation of schema and tables is done in accordance with the [entity relationship diagram](ERD.md). Table names, attributes, and data types are all described there. The tables without foreign keys (```region, currency, family, category, timezone, investment_type, size```) are created first. The second round of tables will reference these (```exchange, general, category_returns```). Then, the remaining tables are created (```daily_performance, indicators, returns, ratios, averages, 52_week_performance```). This will allow the foreign keys to be referenced when the table is first created.
 
-Sample code for creating the 'general' table:
+Sample code for creating the `general` table:
 ```sql
 CREATE TABLE general (
     fund_id INT NOT NULL AUTO_INCREMENT,
@@ -37,22 +37,22 @@ After the tables are created, the dataset is imported into MySQL and formatted i
 
 ### Pre-Import Manipulation/Transformation
 Prior to importing the dataset to MySQL, the data will be cleaned up from the .CSV files in Excel. Specific alterations include:
-- Delete the quote_type attribute from the etf.csv table because it is obsolete (all 'ETF' for the subset of the dataset being used).
+- Delete the quote_type attribute from the etf.csv table because it is obsolete (all have the value `ETF` for the subset of the dataset being used).
 - Delete the AAA fund from the etf_prices.csv table because it does not exist in the etf.csv table.
-- Review data from the etf.csv table for discrepancies from alignment issues from 'fund_short_name, fund_long_name,' and 'fund_family' as described in the discussion on [Kaggle](https://www.kaggle.com/datasets/stefanoleone992/mutual-funds-and-etfs/discussion/329929).
+- Review data from the etf.csv table for discrepancies from alignment issues from `fund_short_name, fund_long_name,` and `fund_family` as described in the discussion on [Kaggle](https://www.kaggle.com/datasets/stefanoleone992/mutual-funds-and-etfs/discussion/329929).
 ### Import Processes
-Load the two .csv files into the created 'us_funds' database using the Table Data Import Wizard.
+Load the two .csv files into the created `us_funds` database using the Table Data Import Wizard.
 ### Post-Import Manipulation/Transformation
-Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. Similar to creating the tables, populating the tables should be done in the same order so that successive tables can reference data such as 'region' and 'region_id'. In the case of data type differences between the original file and the new, more stuctured tables, use the CAST() method.
+Using the `INSERT INTO` command, populate the 16 tables with data from the two .CSV tables. Similar to creating the tables, populating the tables should be done in the same order so that successive tables can reference data such as `region` and `region_id`. In the case of data type differences between the original file and the new, more stuctured tables, use the CAST() method.
 
-Sample code for importing data into the 'region' table:
+Sample code for importing data into the `region` table:
 ```sql
 INSERT INTO region (region)
 SELECT DISTINCT etfs.region_id
 FROM etfs;
 ```
 
-Sample code for importing data into the 'general' table:
+Sample code for importing data into the `general` table:
 ```sql
 INSERT INTO general (fund_symbol, region_id, fund_short_name, fund_long_name, currency_id, category_id, family_id, exchange_id, total_net_assets, investment_strategy, fund_yield, inception_date, annual_holdings_turnover, investment_type_id, size_id)
 SELECT etfs.fund_symbol, region.region_id, etfs.fund_short_name, etfs.fund_long_name, currency.currency_id, category.category_id, family.family_id, exchange.exchange_id, etfs.total_net_assets, etfs.investment_strategy, etfs.fund_yield, etfs.inception_date, etfs.annual_holdings_turnover, investment_type.investment_type_id, size.size_id)
