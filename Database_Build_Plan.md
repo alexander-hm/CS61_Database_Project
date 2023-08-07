@@ -43,7 +43,7 @@ Prior to importing the dataset to MySQL, the data will be cleaned up from the .C
 ### Import Processes
 Load the two .csv files into the created 'us_funds' database using the Table Data Import Wizard.
 ### Post-Import Manipulation/Transformation
-Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. Similar to creating the tables, populating the tables should be done in the same order so that successive tables can reference data such as 'region' and 'region_id'.
+Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. Similar to creating the tables, populating the tables should be done in the same order so that successive tables can reference data such as 'region' and 'region_id'. In the case of data type differences between the original file and the new, more stuctured tables, use the CAST() method.
 
 Sample code for importing data into the 'region' table:
 ```sql
