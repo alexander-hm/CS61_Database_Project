@@ -33,6 +33,8 @@ CREATE TABLE general (
 ```
 
 ## Data Input
+After the tables are created, the dataset is imported into MySQL and formatted into the respective tables. 
+
 #### Pre-Import
 #### Import Processes
 #### Post-Import
