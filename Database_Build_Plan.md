@@ -5,8 +5,8 @@ Create a 'us_funds' database in MySQL using the ```sql CREATE DATABASE``` comman
 Sample code for creating the 'general' table:
 ```sql
 CREATE TABLE general (
-    fund_id INT NON NULL AUTO_INCREMENT,
-    fund_symbol VARCHAR(10) NUN NULL,
+    fund_id INT NOT NULL AUTO_INCREMENT,
+    fund_symbol VARCHAR(10) NOT NULL,
     region_id INT,
     fund_short_name VARCHAR(45),
     fund_long_name VARCHAR(45),
