@@ -1,6 +1,6 @@
 # Database Build Plan
 ## Schema and Tables
-The creation of schema and tables is done in accordance with the [entity relationship diagram](ERD.md). Table names, attributes, and data types are all described there. The tables without foreign keys (```region, currency, family, category, timezone, investment_type, size```) are created first. The second round of tables will reference these (```exchange, general, category_returns```). Then, the remaining tables are created (```daily_performance, indicators, returns, ratios, averages, 52_week_performance```). This will allow the foreign keys to be referenced when the table is first created.
+Create a 'us_funds' database in MySQL using the ```sql CREATE DATABASE``` command. The creation of schema and tables is done in accordance with the [entity relationship diagram](ERD.md). Table names, attributes, and data types are all described there. The tables without foreign keys (```region, currency, family, category, timezone, investment_type, size```) are created first. The second round of tables will reference these (```exchange, general, category_returns```). Then, the remaining tables are created (```daily_performance, indicators, returns, ratios, averages, 52_week_performance```). This will allow the foreign keys to be referenced when the table is first created.
 
 Sample code for creating the ```general``` table is as follows:
 ```sql
@@ -41,5 +41,6 @@ Prior to importing the dataset to MySQL, the data will be cleaned up from the .C
 - Delete the AAA fund from the etf_prices.csv table because it does not exist in the etf.csv table.
 - Review data from the etf.csv table for discrepancies from alignment issues from 'fund_short_name, fund_long_name,' and 'fund_family' as described in the discussion on [Kaggle](https://www.kaggle.com/datasets/stefanoleone992/mutual-funds-and-etfs/discussion/329929).
 #### Import Processes
-Load the two .csv files into MySQL
+Load the two .csv files into the created 'us_funds' database using the Table Data Import Wizard.
 #### Post-Import Manipulation/Transformation
+
