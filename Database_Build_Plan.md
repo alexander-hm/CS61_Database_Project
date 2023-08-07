@@ -2,7 +2,7 @@
 ## Schema and Tables
 Create a 'us_funds' database in MySQL using the ```sql CREATE DATABASE``` command. The creation of schema and tables is done in accordance with the [entity relationship diagram](ERD.md). Table names, attributes, and data types are all described there. The tables without foreign keys (```region, currency, family, category, timezone, investment_type, size```) are created first. The second round of tables will reference these (```exchange, general, category_returns```). Then, the remaining tables are created (```daily_performance, indicators, returns, ratios, averages, 52_week_performance```). This will allow the foreign keys to be referenced when the table is first created.
 
-Sample code for creating the ```general``` table is as follows:
+Sample code for creating the 'general' table:
 ```sql
 CREATE TABLE general (
     fund_id INT NON NULL AUTO_INCREMENT,
@@ -43,4 +43,25 @@ Prior to importing the dataset to MySQL, the data will be cleaned up from the .C
 #### Import Processes
 Load the two .csv files into the created 'us_funds' database using the Table Data Import Wizard.
 #### Post-Import Manipulation/Transformation
+Using the 'INSERT INTO' command, populate the 16 tables with data from the two .CSV tables. 
 
+Sample code for importing data into the 'region' table:
+```sql
+INSERT INTO region (region)
+SELECT DISTINCT etfs.region_id
+FROM etfs;
+```
+
+Sample code for importing data into the 'general' table:
+```sql
+INSERT INTO general (fund_symbol, region_id, fund_short_name, fund_long_name, currency_id, category_id, family_id, exchange_id, total_net_assets, investment_strategy, fund_yield, inception_date, annual_holdings_turnover, investment_type_id, size_id)
+SELECT etfs.fund_symbol, region.region_id, etfs.fund_short_name, etfs.fund_long_name, currency.currency_id, category.category_id, family.family_id, exchange.exchange_id, etfs.total_net_assets, etfs.investment_strategy, etfs.fund_yield, etfs.inception_date, etfs.annual_holdings_turnover, investment_type.investment_type_id, size.size_id)
+FROM etfs
+INNER JOIN region ON etfs.region = region.region
+INNER JOIN currency ON etfs.currency = currency.currency
+INNER JOIN category ON etfs.fund_category = category.fund_category
+INNER JOIN family ON etfs.fund_family = family.fund_family
+INNER JOIN exchange ON etfs.exchange_code = exchange.code
+INNER JOIN investment_type ON etfs.investment_type = investment_type.investment_type
+INNER JOIN size ON etfs.size_type = size.size_type;
+```
