@@ -10,5 +10,6 @@ The tables created with this command are shown below from the `SHOW TABLES` comm
 
 
 ## Schema Descriptions
-Schema descriptions using the `DESCRIBE` function can be found here: [Schema](Schema).
+Schema descriptions using the `DESCRIBE` function are here: [Schema](Schema.md).
 
+## Documentation
