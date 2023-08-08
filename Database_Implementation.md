@@ -8,6 +8,8 @@ The tables created with this command are shown below from the `SHOW TABLES` comm
 
 ![Database Tables](Resources/Tables.png)
 
+
+## Schema Descriptions
 ### region
 ### currency
 ### family
