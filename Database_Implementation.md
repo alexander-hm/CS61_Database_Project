@@ -8,8 +8,23 @@ The tables created with this command are shown below from the `SHOW TABLES` comm
 
 ![Database Tables](Resources/Tables.png)
 
-The schema for `general` using the `DESCRIBE` command is shown here:
 
+## Schema Descriptions
+### region
+### currency
+### family
+### category
+### timezone
+### investment_type
+### size
+### exchange
+### general
 !['general' schema](Resources/Describe_general.png)
+### category_returns
+### daily_performance
+### indicators
+### returns
+### ratios
+### averages
+### 52_week_performance
 
-##
