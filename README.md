@@ -30,7 +30,7 @@ Welcome to the Fund Analysis Database Project. This project is designed to lever
 
 ## 🧑‍💻 Contributors
 
-- [Alexander Huang-Menders](github.com/alexander-hm)
+- [Alexander Huang-Menders](https://github.com/alexander-hm)
 
 ---
 
