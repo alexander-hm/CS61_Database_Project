@@ -15,17 +15,16 @@ Schema descriptions from the `DESCRIBE` function are here: [Schema](Schema.md).
 ---
 ## Documentation
 ### Import Method
-#### Method Description:
 The `Table Data Import Wizard` tool (provided by MySQL Workbench) was used for the data transfer from the CSV files into the database. This allowed for an easy and quick transfer of data.
 
 
 ### Data Preparation
-#### Pre-Import:
+#### _Pre-Import_:
 **Column Selection**: Even though the CSV files contained unnecessary columns, there was no need to drop them in Excel or any other spreadsheet software. This decision was based on the rationale that the redundant tables wouldn't hinder the post-import processes. They just weren't referenced in queries to decompose the tables.
 
 **Data Discrepancies**: On reviewing the dataset, I observed discrepancies between the short fund name and the long fund name columns. After a meticulous manual examination, I altered the three discrepancies in Excel to ensure the data's accuracy.
 
-#### Post-Import:
+#### _Post-Import_:
 **Data Decomposition**: After importing the data from the two extensive CSV files, the objective was to refine the database structure for optimal querying and analytics. Thus, the two primary tables were decomposed into sixteen separate tables. The process was carried out using SQL's INSERT INTO command.
 For instance, if we wanted to decompose data from a the `etfs` table into a new table called `regions`, the SQL command is as follows:
 
