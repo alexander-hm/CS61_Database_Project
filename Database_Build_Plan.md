@@ -48,7 +48,7 @@ Using the `INSERT INTO` command, populate the 16 tables with data from the two .
 Sample code for importing data into the `region` table:
 ```sql
 INSERT INTO region (region)
-SELECT DISTINCT etfs.region_id
+SELECT DISTINCT etfs.region
 FROM etfs;
 ```
 
