@@ -14,6 +14,8 @@ Screenshots of schema descriptions using the `DESCRIBE` function are here: [Sche
 
 ---
 ## Documentation
+The .sql file used to process the data after importing can be found here: [Post Import](/Resources/Post_Import.sql).
+
 ### Import Method
 The `Table Data Import Wizard` tool (provided by MySQL Workbench) was used for the data transfer from the CSV files into the database. This allowed for an easy and quick transfer of data.
 
@@ -96,3 +98,4 @@ END
 ---
 ### Challenges
 - Outliers: There were a few cases where 1 or 2 values in the 1500+ rows of the `etfs.csv` had incorrect data (i.e. a decimal > 1000.0 when it should have been at most 1.0). They would throw errors such as `Out of range value` or `Incorrect DECIMAL value`. In order to handle this, I added statements in the decimal casting functions to check for these cases.
+- Data size: In certain cases, the data that was going to be imported into the decomposed tables was larger than anticipated (specifically decimal values). It was necessary to change the data types of attributes in these tables to accommodate this larger data.
