@@ -18,6 +18,5 @@ LIMIT 10;
 ### Results
 ![Query 1 Results](/Resources/Query_1_Results.png)
 
-On your Project site, document the query 
-On your Project site, document the results
-Provide a brief description of the findings on the Project Site
+### Findings
+The best performing ETF in the dataset is the 'BlackRock International Impact Fund Investor A' (UCC) which averaged an 18.27% return over its lifetime. The next best performing funds were 'Auxier Focus Fund Institutional' (PNQI) and 'Brown Advisory Small-Cap Fundamental Value Fund Institutional Shares' (RXL), which averaged returns of 16.79% and 14.67%, respectively.
