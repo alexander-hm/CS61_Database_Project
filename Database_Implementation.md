@@ -14,11 +14,9 @@ Screenshots of schema descriptions using the `DESCRIBE` function are here: [Sche
 
 ---
 ## Documentation
----
 ### Import Method
 The `Table Data Import Wizard` tool (provided by MySQL Workbench) was used for the data transfer from the CSV files into the database. This allowed for an easy and quick transfer of data.
 
----
 ### Data Preparation
 #### _Pre-Import_:
 **Column Selection**: Even though the CSV files contained unnecessary columns, there was no need to drop them in Excel or any other spreadsheet software. This decision was based on the rationale that the redundant tables wouldn't hinder the post-import processes. They just weren't referenced in queries to decompose the tables.
