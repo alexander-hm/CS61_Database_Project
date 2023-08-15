@@ -34,7 +34,7 @@ SELECT etfs.region
 FROM etfs;
 ```
 
-This method ensures that data from the larger table is extracted and organized into smaller, more focused tables which aids in more efficient querying and data management. Additionally, the new region table automatically indexes new regions entered into the table to create a unique `region_id` for each. Later post import decompositions were more complex, such as the `general` table:
+This method ensures that data from the larger table is extracted and organized into smaller, more focused tables which aids in more efficient querying and data management. Additionally, the new table automatically indexes new columns entered into the table to create a unique `id` for each. Following post-import decompositions were more complex, such as the `general` table. These decompositions/insertions required joining the table with the previous tables to match the correct id for each `region, currency, family, etc.` object. Additionally, the `DECIMAL` fields had to be cast because the original data was of the type `TEXT`. 
 
 ```sql
 INSERT INTO general (fund_symbol, region_id, fund_short_name, fund_long_name, currency_id, category_id, family_id, exchange_id, total_net_assets, investment_strategy, fund_yield, inception_date, annual_holdings_turnover, investment_type_id, size_id)
@@ -51,4 +51,32 @@ INNER JOIN size ON etfs.size_type = size.size_type;
 
 By adopting these methods for data import and manipulation, we were able to transform raw, unprocessed data into a structured, organized database that serves as a robust foundation for our further analyses.
 
+**SQL Functions**: In order to cast many different attributes to various `DECIMAL` types, I created functions to make the code faster and cleaner. Additionally, it allowed me to debug more efficiently because I could make single changes in the function that affected the numerous calls to the function in each `INSERT` query.
 
+The functions were defined as follows and can be seen in the INSERT statements on this page and in the `.sql` file.
+
+DEC_5_4 (cast `TEXT` input as `DECIMAL(5,4)`):
+```sql
+CREATE DEFINER=`root`@`localhost` FUNCTION `DEC_5_4`(val TEXT) RETURNS decimal(5,4)
+    DETERMINISTIC
+BEGIN
+IF CAST(val AS DOUBLE) > 1
+THEN RETURN 0;
+ELSE 
+	RETURN ROUND(CAST(COALESCE(NULLIF(TRIM(val), ''), 0) AS DECIMAL(5,4)), 4);
+END IF;
+END
+```
+
+DEC_7_4 (cast `TEXT` input as `DECIMAL(7,4)`);
+```sql
+CREATE DEFINER=`root`@`localhost` FUNCTION `DEC_7_4`(val TEXT) RETURNS decimal(7,4)
+    DETERMINISTIC
+BEGIN
+IF CAST(val AS DOUBLE) >= 1000
+THEN RETURN 0;
+ELSE 
+	RETURN ROUND(CAST(COALESCE(NULLIF(TRIM(val), ''), 0) AS DECIMAL(7,4)), 4);
+END IF;
+END
+```
