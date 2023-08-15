@@ -14,10 +14,11 @@ Schema descriptions from the `DESCRIBE` function are here: [Schema](Schema.md).
 
 ---
 ## Documentation
+---
 ### Import Method
 The `Table Data Import Wizard` tool (provided by MySQL Workbench) was used for the data transfer from the CSV files into the database. This allowed for an easy and quick transfer of data.
 
-
+---
 ### Data Preparation
 #### _Pre-Import_:
 **Column Selection**: Even though the CSV files contained unnecessary columns, there was no need to drop them in Excel or any other spreadsheet software. This decision was based on the rationale that the redundant tables wouldn't hinder the post-import processes. They just weren't referenced in queries to decompose the tables.
@@ -63,8 +64,8 @@ INNER JOIN general g ON e.fund_symbol = g.fund_symbol;
 By adopting these methods for data import and manipulation, we were able to transform raw, unprocessed data into a structured, organized database that serves as a robust foundation for our further analyses.
 
 ---
-
-**SQL Functions**: In order to cast many different attributes to various `DECIMAL` types, I created functions to make the code faster and cleaner. Additionally, it allowed me to debug more efficiently because I could make single changes in the function that affected the numerous calls to the function in each `INSERT` query.
+### SQL Functions
+In order to cast many different attributes to various `DECIMAL` types, I created functions to make the code faster and cleaner. Additionally, it allowed me to debug more efficiently because I could make single changes in the function that affected the numerous calls to the function in each `INSERT` query. The functions included `TRIM, NULLIF, COALESCE, CAST`, and `ROUND` methods.
 
 The functions were defined as follows and can be seen in the INSERT statements on this page and in the `.sql` file.
 
@@ -93,3 +94,7 @@ ELSE
 END IF;
 END
 ```
+
+---
+### Challenges
+- Outliers: There were a few cases where 1 or 2 values in the 1500+ rows of the `etfs.csv` had incorrect data (i.e. a decimal > 1000.0 when it should have been at most 1.0). They would throw errors such as `Out of range value` or `Incorrect DECIMAL value`. In order to handle this, I added statements in the decimal casting functions to check for these cases.
