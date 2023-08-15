@@ -10,7 +10,7 @@ The tables created with this command are shown below from the `SHOW TABLES` comm
 
 ---
 ## Schema Descriptions
-Schema descriptions from the `DESCRIBE` function are here: [Schema](Schema.md).
+Screenshots of schema descriptions using the `DESCRIBE` function are here: [Schema](Schema.md).
 
 ---
 ## Documentation
