@@ -26,7 +26,7 @@ The `Table Data Import Wizard` tool (provided by MySQL Workbench) was used for t
 
 #### _Post-Import_:
 **Data Decomposition**: After importing the data from the two extensive CSV files, the objective was to refine the database structure for optimal querying and analytics. Thus, the two primary tables were decomposed into sixteen separate tables. The process was carried out using SQL's INSERT INTO command.
-For instance, if we wanted to decompose data from a the `etfs` table into a new table called `regions`, the SQL command is as follows:
+The decomposition of data from the `etfs` table into the small tables `region, currency, family, category, timezone, investment_type, size` resembled the following:
 
 ```sql
 INSERT INTO region (region)
