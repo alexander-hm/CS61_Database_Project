@@ -27,7 +27,8 @@ FROM
 ) AS dp
 INNER JOIN general g ON dp.fund_id = g.fund_id
 WHERE ROUND((close - open)/open, 4) = max_change
-ORDER BY daily_change DESC;
+ORDER BY daily_change DESC
+LIMIT 10;
 #*/
 
 #4: What is the average yearly growth of funds? By how much are the top funds able to outperform the average?
@@ -44,5 +45,6 @@ FROM returns r
 INNER JOIN general g ON r.fund_id = g.fund_id
 INNER JOIN category c ON g.category_id = c.category_id
 GROUP BY fund_category
-ORDER BY category_avg_yearly_return DESC;
+ORDER BY category_avg_yearly_return DESC
+LIMIT 10;
 #*/
