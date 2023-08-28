@@ -17,7 +17,7 @@ ORDER BY average_volume DESC
 LIMIT 10;
 #*/
 
-#3: What is the largest single-day growth experienced by a fund? Month? Year?
+#3: What is the largest single-day growth experienced by a fund?
 /*
 SELECT fund_symbol, price_date, ROUND((close - open)/open, 4) AS daily_change
 FROM 
