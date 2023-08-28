@@ -19,13 +19,18 @@ Welcome to the Fund Analysis Database Project. This project is designed to lever
 
 5. **[Schema](Schema.md)**: A detailed breakdown of the structure of each table in the database, including fields, data types, and relationships.
 
-6. **[Research Analysis](Research_Analysis.md)**: A description of the research questions and queries used to answer them. Includes results of these queries and descriptions of findings.
+6. **[Research Analysis](Research_Analysis.md)**: Research questions and queries used to answer them based on the dataset. Includes results of these queries and descriptions of findings.
+
+7. **[Database Enhancement](Database_Enhancement.md)**: Documentation of database enhancements using Python for data visualization and data analysis.
+
+8. **[Project Summary](Project_Summary.md)**: General summary of project with highlights. 
 
 ---
 
 ## 🛠️ Tools and Technologies
 - **DBMS**: MySQL
 - **Data Modeling Tool**: MySQL Workbench 8.0
+- **Enhancements**: Python 
 - **Other tools**: Kaggle
 
 ---
