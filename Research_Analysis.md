@@ -91,8 +91,10 @@ LIMIT 10;
 ```
 
 ### Results
-![Query 4A Results](/Resources/Query_4_Results_2)
+#### Total average return across all funds:
+![Query 4A Results](/Resources/Query_4_Results_2.png)
 
+#### Average fund returns by category:
 ![Query 4B Results](/Resources/Query_4_Results.png)
 
 ![Query 4 Visual](/Resources/Q4_plot.png)
