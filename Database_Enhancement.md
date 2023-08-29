@@ -29,21 +29,126 @@ Once the data is available in Python, it's straightforward to plot using librari
 - This graph presents the top 10 funds based on their average yearly returns.
 - SQL query aggregates the yearly returns across 21 years and computes their average.
 - Data is represented as a bar graph, with fund symbols on the x-axis and average yearly returns on the y-axis.
+```python
+# ----- Research Question 1 -----
+# Selects columns 'fund_symbol', 'fund_long_name', and avg_yearly_return
+mycursor.execute(Query1)
+result = mycursor.fetchall
+
+# save query results into arrays
+symbol = []
+yearly_return = []
+for i in mycursor:
+    symbol.append(i[0])
+    yearly_return.append(i[2])
+
+# plot a bar graph with the query results
+plt.bar(symbol, yearly_return)
+
+# set labels and title of graph
+plt.xlabel("Fund Symbol")
+plt.ylabel("Average Yearly Return")
+plt.title("Highest Average Yearly Returns")
+
+# display the graph
+plt.show()
+```
 
 #### 2. Highest Average Daily Volume:
 - This graph showcases the top 10 funds based on their average daily volume.
 - A SQL query calculates the average volume of funds.
 - The data is visualized as a bar graph, with fund symbols on the x-axis and average volume on the y-axis.
+```python
+# ----- Research Question 2 -----
+# Selects columns 'fund_symbol' and 'average_volume'
+mycursor.execute(Query2)
+result = mycursor.fetchall
+
+fund_symbol = []
+average_volume = []
+
+for i in mycursor:
+    fund_symbol.append(i[0])
+    average_volume.append(i[1])
+
+# plot a bar graph with the query results
+plt.bar(fund_symbol, average_volume)
+
+# set labels and title of graph
+plt.xlabel("Fund Symbol")
+plt.ylabel("Average Volume")
+plt.title("Highest Average Daily Volume")
+
+# display the graph
+plt.show()
+```
 
 #### 3. Highest Daily Price Change:
 - This graph depicts the top 10 funds with the highest daily price change.
 - The date corresponding to each change is also incorporated for clarity.
 - Data is represented as a bar graph with concatenated fund symbols and dates on the x-axis and daily change percentages on the y-axis.
+```python
+# ----- Research Question 3 -----
+# Selects columns 'fund_symbol', 'price_date', and 'daily_change'
+mycursor.execute(Query3)
+result = mycursor.fetchall
+
+fund_symbol = []
+price_date = []
+daily_change = []
+
+for i in mycursor:
+    fund_symbol.append(i[0])
+    price_date.append(i[1])
+    daily_change.append(i[2])
+
+symbol_date = []
+
+for i in range(len(fund_symbol)) :
+    fund_symbol[i] = fund_symbol[i] + '\n' + price_date[i].strftime('%m/%d/%Y')
+
+# plot a bar graph with the query results
+plt.bar(fund_symbol, daily_change)
+
+# set labels and title of graph
+plt.xlabel("Fund Symbol")
+plt.ylabel("Daily Change")
+plt.title("Highest Daily Price Change")
+plt.xticks(rotation=25, horizontalalignment='right')
+plt.tight_layout()
+# display the graph
+plt.show()
+```
 
 #### 4. Highest Average Return by Category:
 - This visualization displays the top 10 fund categories based on their average yearly returns.
 - The SQL query aggregates returns across funds and categorizes them.
 - The data is presented as a bar graph, with fund categories on the x-axis and average returns on the y-axis.
+```python
+# ----- Research Question 4 -----
+# Selects columns 'fund_category' and 'category_avg_yearly_return'
+mycursor.execute(Query4)
+result = mycursor.fetchall
+
+fund_category = []
+category_avg_yearly_return = []
+
+for i in mycursor:
+    fund_category.append(i[0])
+    category_avg_yearly_return.append(i[1])
+
+# plot a bar graph with the query results
+plt.bar(fund_category, category_avg_yearly_return)
+
+# set labels and title of graph
+plt.xlabel("Fund Category")
+plt.ylabel("Average Return")
+plt.title("Highest Average Return by Category")
+plt.xticks(rotation=25, horizontalalignment='right')
+plt.tight_layout()
+# display the graph
+plt.show()
+```
 
 ### Takeaways
 By integrating Python with MySQL, it becomes convenient to use Python's data visualization capabilities directly on database data.
