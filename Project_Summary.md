@@ -10,7 +10,7 @@ The Fund Analysis Database Project is a culminating project in the COSC 61: Data
 4. **Database Implementation**: This phase witnesses the actual execution of the build plan, highlighting any challenges encountered and the solutions employed to overcome them.
 5. **Schema Definition**: A detailed breakdown of the database's structure is provided, including the fields, data types, and relationships of each table.
 6. **Research Analysis**: The dataset is then used to answer specific research questions. This section includes the results of these queries and a description of the findings.
-7. **Database Enhancement**: The database undergoes enhancements using Python for data visualization.
+7. **Database Enhancement**: Python was used to provide data visualization and statistical analysis enhancements to the research questions.
 
 ## Research Questions
 1. Which funds performed best over the period of time?
