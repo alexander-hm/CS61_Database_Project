@@ -133,4 +133,6 @@ This script connects to the MySQL database, fetches specific data, analyzes this
 The code printed the following correlation:
 `Correlation between average yearly return and average volume: -0.01`
 
+**-0.01**
+
 This showed that there was little to no relationship between a fund's average yearly return and its average trading volume. This same method can be used as a model to search for correlations between other attributes and computed data from the database as well.
