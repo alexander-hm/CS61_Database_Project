@@ -1,6 +1,6 @@
 # Database Enhancement
 ## [Python File](Enhancements.py)
-This markdown document illustrates the enhancements made to a MySQL database to incorporate Python visualization. By accessing the MySQL database in Python, we can gather essential data and visualize it using Python's visualization libraries like matplotlib and seaborn.
+This markdown document illustrates the enhancements made to a MySQL database to incorporate data visualization and statistical analysis with Python. By accessing the MySQL database in Python, we can gather essential data and visualize it using Python's visualization libraries like `matplotlib` and `seaborn` as well as conduct statistical analysis with `pandas` and `numpy`.
 
 # Data Visualization with Python
 
